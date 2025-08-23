@@ -18,4 +18,4 @@ export const getEmptyWalletData = (): StoredWalletData => {
     providerName: null,
     providerRdns: null,
   };
-}; 
+};

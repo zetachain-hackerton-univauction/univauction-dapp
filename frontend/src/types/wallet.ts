@@ -22,4 +22,4 @@ export interface EIP6963ProviderDetail {
 
 export interface EIP6963AnnounceProviderEvent extends CustomEvent {
   detail: EIP6963ProviderDetail;
-} 
+}

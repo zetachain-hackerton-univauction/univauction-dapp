@@ -33,4 +33,4 @@ export const useWalletEvents = (
       provider.provider.removeListener('chainChanged', handleChainChanged);
     };
   }, [provider, onAccountsChanged, onChainChanged]);
-}; 
+};

@@ -1,16 +1,7 @@
-import './index.css';
-import './fonts.css';
 
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+  import { createRoot } from "react-dom/client";
+  import App from "./App.js";
+  import "./index.css";
 
-import App from './App.tsx';
-import { WalletProvider } from './context/WalletProvider.tsx';
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <WalletProvider>
-      <App />
-    </WalletProvider>
-  </StrictMode>
-);
+  createRoot(document.getElementById("root")!).render(<App />);
+  

@@ -188,4 +188,4 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
     connectWallet,
     disconnectWallet,
   };
-}; 
+};

@@ -79,4 +79,4 @@ export const createProviderAnnounceHandler = (
     const { detail } = event;
     onNewProvider(detail);
   };
-}; 
+};

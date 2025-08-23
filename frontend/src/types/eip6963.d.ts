@@ -5,4 +5,4 @@ declare global {
     'eip6963:announceProvider': EIP6963AnnounceProviderEvent;
     'eip6963:requestProvider': Event;
   }
-} 
+}

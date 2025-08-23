@@ -71,4 +71,4 @@ export const useWalletState = (provider: EIP6963ProviderDetail | null) => {
     decimalChainId,
     isSupportedChain,
   };
-}; 
+};

@@ -52,4 +52,4 @@ export const useWalletProviders = () => {
   }, [handleAnnounceProvider]);
 
   return { providers };
-}; 
+};
