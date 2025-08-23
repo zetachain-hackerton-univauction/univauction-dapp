@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import type { EIP6963ProviderDetail } from '../types/wallet';
+import type { EIP6963ProviderDetail } from "../types/wallet";
 
 interface WalletEventHandlers {
   onAccountsChanged: (accounts: string[]) => void;
@@ -22,15 +22,15 @@ export const useWalletEvents = (
       onChainChanged(chainId as string);
     };
 
-    provider.provider.on('accountsChanged', handleAccountsChanged);
-    provider.provider.on('chainChanged', handleChainChanged);
+    provider.provider.on("accountsChanged", handleAccountsChanged);
+    provider.provider.on("chainChanged", handleChainChanged);
 
     return () => {
       provider.provider.removeListener(
-        'accountsChanged',
+        "accountsChanged",
         handleAccountsChanged
       );
-      provider.provider.removeListener('chainChanged', handleChainChanged);
+      provider.provider.removeListener("chainChanged", handleChainChanged);
     };
   }, [provider, onAccountsChanged, onChainChanged]);
 };

@@ -1,6 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 
-import { useWallet } from './useWallet';
+import { useWallet } from "./useWallet";
 
 export const useSwitchChain = () => {
   const { selectedProvider } = useWallet();
@@ -8,17 +8,17 @@ export const useSwitchChain = () => {
   const switchChain = useCallback(
     async (chainId: number) => {
       if (!selectedProvider) {
-        console.error('No provider selected');
+        console.error("No provider selected");
         return;
       }
 
       try {
         await selectedProvider.provider.request({
-          method: 'wallet_switchEthereumChain',
+          method: "wallet_switchEthereumChain",
           params: [{ chainId: `0x${chainId.toString(16)}` }],
         });
       } catch (error) {
-        console.error('Failed to switch chain:', error);
+        console.error("Failed to switch chain:", error);
       }
     },
     [selectedProvider]

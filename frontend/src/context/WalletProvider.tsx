@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { type ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from "react";
 
-import { useWalletConnection } from '../hooks/useWalletConnection';
-import { useWalletProviders } from '../hooks/useWalletProviders';
-import { useWalletState } from '../hooks/useWalletState';
-import { WalletContext } from './WalletContext';
+import { useWalletConnection } from "../hooks/useWalletConnection";
+import { useWalletProviders } from "../hooks/useWalletProviders";
+import { useWalletState } from "../hooks/useWalletState";
+import { WalletContext } from "./WalletContext";
 
 export const WalletProvider = ({ children }: { children: ReactNode }) => {
   const { providers } = useWalletProviders();
@@ -23,17 +23,17 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 
   const contextValue = useMemo(
     () => ({
-      providers,
-      selectedProvider,
+      account,
+      connectWallet,
       connecting,
-      reconnecting,
+      decimalChainId,
+      disconnectWallet,
+      error,
       isConnected,
       isSupportedChain,
-      decimalChainId,
-      error,
-      connectWallet,
-      disconnectWallet,
-      account,
+      providers,
+      reconnecting,
+      selectedProvider,
     }),
     [
       providers,

@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import type { EIP6963ProviderDetail } from '../types/wallet';
+import type { EIP6963ProviderDetail } from "../types/wallet";
 import {
   createProviderAnnounceHandler,
   requestEIP6963Providers,
-} from '../utils/eip6963';
+} from "../utils/eip6963";
 
 /**
  * Hook to discover and manage EIP-6963 wallet providers
@@ -35,7 +35,7 @@ export const useWalletProviders = () => {
 
     // Add event listener for provider announcements
     window.addEventListener(
-      'eip6963:announceProvider',
+      "eip6963:announceProvider",
       announceHandler as EventListener
     );
 
@@ -45,7 +45,7 @@ export const useWalletProviders = () => {
     // Cleanup
     return () => {
       window.removeEventListener(
-        'eip6963:announceProvider',
+        "eip6963:announceProvider",
         announceHandler as EventListener
       );
     };

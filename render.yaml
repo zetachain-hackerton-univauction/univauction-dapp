@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: univauction-dapp
+    runtime: static
+    rootDir: frontend
+    branch: develop
+    buildCommand: yarn && yarn build
+    staticPublishPath: ./dist
+    buildFilter:
+      ignoredPaths:
+        - src/**/*.test.js
