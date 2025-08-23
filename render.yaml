@@ -5,7 +5,7 @@ services:
     rootDir: frontend
     branch: develop
     buildCommand: yarn && yarn build
-    staticPublishPath: ./dist
+    staticPublishPath: ./build
     buildFilter:
       ignoredPaths:
         - src/**/*.test.js
