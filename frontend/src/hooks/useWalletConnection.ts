@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useLocalStorage } from 'react-use';
+import { useCallback, useEffect, useState } from "react";
+import { useLocalStorage } from "react-use";
 
-import type { EIP6963ProviderDetail } from '../types/wallet';
+import type { EIP6963ProviderDetail } from "../types/wallet";
 import {
   findProviderByAccount,
   findProviderByName,
   findProviderByRdns,
   findProviderByUuid,
-} from '../utils/eip6963';
-import type { StoredWalletData } from '../utils/walletStorage';
-import { getEmptyWalletData } from '../utils/walletStorage';
+} from "../utils/eip6963";
+import type { StoredWalletData } from "../utils/walletStorage";
+import { getEmptyWalletData } from "../utils/walletStorage";
 
 /**
  * Hook to manage wallet connections
@@ -24,7 +24,7 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
   // Use localStorage to persist wallet connection data
   const [savedWalletData, setSavedWalletData] =
     useLocalStorage<StoredWalletData>(
-      'wallet-connection',
+      "wallet-connection",
       getEmptyWalletData()
     );
 
@@ -40,7 +40,7 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
 
         // Request accounts
         const accounts = (await provider.provider.request({
-          method: 'eth_requestAccounts',
+          method: "eth_requestAccounts",
         })) as string[];
 
         if (accounts && accounts.length > 0) {
@@ -49,35 +49,35 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
           // Save to localStorage with provider identifiers
           setSavedWalletData({
             account: accounts[0],
-            providerUuid: provider.info.uuid,
             providerName: provider.info.name,
             providerRdns: provider.info.rdns,
+            providerUuid: provider.info.uuid,
           });
 
-          return { success: true, account: accounts[0] };
+          return { account: accounts[0], success: true };
         }
 
-        return { success: false, account: null };
+        return { account: null, success: false };
       } catch (err) {
         // Provide a more user-friendly error message for common errors
         const errorMsg = err instanceof Error ? err.message : String(err);
-        let userErrorMsg = 'Failed to connect wallet';
+        let userErrorMsg = "Failed to connect wallet";
 
         if (
-          errorMsg.includes('429') ||
-          errorMsg.includes('too many requests')
+          errorMsg.includes("429") ||
+          errorMsg.includes("too many requests")
         ) {
           userErrorMsg =
-            'Connection temporarily unavailable due to too many requests. Please try again in a moment.';
-        } else if (errorMsg.includes('user rejected')) {
-          userErrorMsg = 'Connection rejected by user.';
-        } else if (errorMsg.includes('already pending')) {
+            "Connection temporarily unavailable due to too many requests. Please try again in a moment.";
+        } else if (errorMsg.includes("user rejected")) {
+          userErrorMsg = "Connection rejected by user.";
+        } else if (errorMsg.includes("already pending")) {
           userErrorMsg =
-            'Connection request already pending. Please check your wallet.';
+            "Connection request already pending. Please check your wallet.";
         }
 
         setError(userErrorMsg);
-        return { success: false, error: userErrorMsg };
+        return { error: userErrorMsg, success: false };
       } finally {
         setConnecting(false);
       }
@@ -143,7 +143,7 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
         if (savedProvider) {
           // Check if we can get accounts without requesting permission
           const accounts = (await savedProvider.provider.request({
-            method: 'eth_accounts',
+            method: "eth_accounts",
           })) as string[];
 
           // If we have accounts and they include our saved account, we can reconnect
@@ -162,7 +162,7 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
         }
       } catch (error) {
         // Don't clear saved data on transient errors
-        console.error('Error reconnecting wallet:', error);
+        console.error("Error reconnecting wallet:", error);
       } finally {
         setReconnecting(false);
       }
@@ -180,12 +180,12 @@ export const useWalletConnection = (providers: EIP6963ProviderDetail[]) => {
   }, [providers, savedWalletData, isConnected, setSavedWalletData]);
 
   return {
-    selectedProvider,
-    connecting,
-    reconnecting,
-    isConnected,
-    error,
     connectWallet,
+    connecting,
     disconnectWallet,
+    error,
+    isConnected,
+    reconnecting,
+    selectedProvider,
   };
-}; 
+};

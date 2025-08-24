@@ -1,0 +1,272 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0x0c7e3D462385148d4A5803D371AD6bb3Ae17e513",
+      "txHash": "0x3db76990f15ec88703fcfd2f79e4aaa83dc4f54c538b6adb1a37a08417df7754",
+      "kind": "uups"
+    },
+    {
+      "address": "0x6F0a1bebeeA75241cbdDBF65c779E6ac52109265",
+      "txHash": "0xc1891d71ec269b61244a61dc471ae93db56ede4cae48dbc471a3d499cf4a6447",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "38a07f2da8b961650c3dbbabc2cd438071511335068a1f3355b6c3ff57b1849f": {
+      "address": "0x48Cc651a670309D96641F66B1264004Ad32426B2",
+      "txHash": "0x550fc6c8b3438a8432b6350206b952b36fedc24fe8ab152262df9c932a19cae8",
+      "layout": {
+        "solcVersion": "0.8.26",
+        "storage": [
+          {
+            "label": "uniswapRouter",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "SwapMintUniversal",
+            "src": "contracts/SwapMintUniversal.sol:27"
+          },
+          {
+            "label": "gateway",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(GatewayZEVM)4170",
+            "contract": "SwapMintUniversal",
+            "src": "contracts/SwapMintUniversal.sol:28"
+          },
+          {
+            "label": "gasLimit",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "SwapMintUniversal",
+            "src": "contracts/SwapMintUniversal.sol:29"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_contract(GatewayZEVM)4170": {
+            "label": "contract GatewayZEVM",
+            "numberOfBytes": "20"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "98a08a8aa44dde0be615b89983f361b5ccbeb39f0525b22d3afe609504f4f095": {
+      "address": "0x07BF30D94F87b4515Cc34C2fF84B5B6d2b9b66aa",
+      "txHash": "0x6e82e112afab5e053376dde95f87c963fc37ef2b318b827dce5c9373572e9e8a",
+      "layout": {
+        "solcVersion": "0.8.26",
+        "storage": [
+          {
+            "label": "uniswapRouter",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:27"
+          },
+          {
+            "label": "gateway",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(GatewayZEVM)4170",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:28"
+          },
+          {
+            "label": "gasLimit",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:29"
+          },
+          {
+            "label": "sETH",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_address",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:31"
+          },
+          {
+            "label": "usdcZRC20",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:32"
+          },
+          {
+            "label": "nft",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_address",
+            "contract": "SwapMintSETH",
+            "src": "contracts/SwapMintSETH.sol:33"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_contract(GatewayZEVM)4170": {
+            "label": "contract GatewayZEVM",
+            "numberOfBytes": "20"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "0e92a4ce0339127edbd6f4eef73c85ffa616dc1667b2ccbbf0a7bce5362281ef": {
+      "address": "0xBB08E8d734372Bf970fff410F9cA195077e0bd63",
+      "txHash": "0x6f1782a0d5028bbc560de036d068126523fc256b7bad697414c0ef5275782d8d",
+      "layout": {
+        "solcVersion": "0.8.26",
+        "storage": [
+          {
+            "label": "uniswapRouter",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "SwapOnlyUniversal",
+            "src": "contracts/SwapOnlyUniversal.sol:21"
+          },
+          {
+            "label": "gateway",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(GatewayZEVM)13987",
+            "contract": "SwapOnlyUniversal",
+            "src": "contracts/SwapOnlyUniversal.sol:22"
+          },
+          {
+            "label": "gasLimit",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "SwapOnlyUniversal",
+            "src": "contracts/SwapOnlyUniversal.sol:23"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_contract(GatewayZEVM)13987": {
+            "label": "contract GatewayZEVM",
+            "numberOfBytes": "20"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

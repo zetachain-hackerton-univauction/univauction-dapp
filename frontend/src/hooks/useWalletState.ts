@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { SUPPORTED_CHAIN_IDS } from '../constants/chains';
-import type { EIP6963ProviderDetail } from '../types/wallet';
-import { useWalletEvents } from './useWalletEvents';
+import { SUPPORTED_CHAIN_IDS } from "../constants/chains";
+import type { EIP6963ProviderDetail } from "../types/wallet";
+import { useWalletEvents } from "./useWalletEvents";
 
 export const useWalletState = (provider: EIP6963ProviderDetail | null) => {
   const [account, setAccount] = useState<string | null>(null);
@@ -45,7 +45,7 @@ export const useWalletState = (provider: EIP6963ProviderDetail | null) => {
     const initializeWalletState = async () => {
       try {
         const accounts = (await provider.provider.request({
-          method: 'eth_accounts',
+          method: "eth_accounts",
         })) as string[];
 
         if (accounts && accounts.length > 0) {
@@ -53,12 +53,12 @@ export const useWalletState = (provider: EIP6963ProviderDetail | null) => {
         }
 
         const currentChainId = (await provider.provider.request({
-          method: 'eth_chainId',
+          method: "eth_chainId",
         })) as string;
 
         setChainId(currentChainId);
       } catch (error) {
-        console.error('Error initializing wallet state:', error);
+        console.error("Error initializing wallet state:", error);
       }
     };
 
@@ -71,4 +71,4 @@ export const useWalletState = (provider: EIP6963ProviderDetail | null) => {
     decimalChainId,
     isSupportedChain,
   };
-}; 
+};

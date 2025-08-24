@@ -1,35 +1,35 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-import type { EIP6963ProviderDetail } from '../types/wallet';
+import type { EIP6963ProviderDetail } from "../types/wallet";
 
 interface WalletContextType {
-  providers: EIP6963ProviderDetail[];
-  selectedProvider: EIP6963ProviderDetail | null;
-  decimalChainId: number | null;
-  connecting: boolean;
-  reconnecting: boolean;
-  isConnected: boolean;
-  isSupportedChain: boolean;
-  error: string | null;
+  account: string | null;
   connectWallet: (provider: EIP6963ProviderDetail) => Promise<{
-    success: boolean;
     account?: string | null;
     error?: string;
+    success: boolean;
   }>;
+  connecting: boolean;
+  decimalChainId: number | null;
   disconnectWallet: () => void;
-  account: string | null;
+  error: string | null;
+  isConnected: boolean;
+  isSupportedChain: boolean;
+  providers: EIP6963ProviderDetail[];
+  reconnecting: boolean;
+  selectedProvider: EIP6963ProviderDetail | null;
 }
 
 export const WalletContext = createContext<WalletContextType>({
-  providers: [],
-  selectedProvider: null,
-  decimalChainId: null,
+  connectWallet: async () => ({ success: false }),
   connecting: false,
-  reconnecting: false,
+  account: null,
+  decimalChainId: null,
+  disconnectWallet: () => {},
+  error: null,
   isConnected: false,
   isSupportedChain: false,
-  error: null,
-  connectWallet: async () => ({ success: false }),
-  disconnectWallet: () => {},
-  account: null,
+  providers: [],
+  reconnecting: false,
+  selectedProvider: null,
 });
