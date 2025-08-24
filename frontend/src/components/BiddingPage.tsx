@@ -207,7 +207,7 @@ export function BiddingPage({ onNavigate, ideas, appState, addUserBid }: Bidding
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Current Bid</span>
-                      <span className="text-2xl text-primary">${selectedIdea.currentBid}</span>
+                      <span className="text-2xl text-primary">{selectedIdea.currentBid} ETH</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Time Left</span>
@@ -251,7 +251,7 @@ export function BiddingPage({ onNavigate, ideas, appState, addUserBid }: Bidding
                     </div>
                     <div className="text-right">
                       <div className="text-sm text-muted-foreground">Available Balance</div>
-                      <div className="text-sm text-primary">${USER_BALANCE.toLocaleString()}</div>
+                      <div className="text-sm text-primary">{USER_BALANCE.toLocaleString()}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -301,8 +301,7 @@ export function BiddingPage({ onNavigate, ideas, appState, addUserBid }: Bidding
                         <SelectItem value="ZETA">ZETA</SelectItem>
                         <SelectItem value="ETH">Ethereum (ETH)</SelectItem>
                         <SelectItem value="BTC">Bitcoin (BTC)</SelectItem>
-                        <SelectItem value="USDC">USD Coin (USDC)</SelectItem>
-                        <SelectItem value="USDT">Tether (USDT)</SelectItem>
+                        <SelectItem value="WETH">Wrapped ETH (WETH)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -312,7 +311,7 @@ export function BiddingPage({ onNavigate, ideas, appState, addUserBid }: Bidding
                     <Input
                       id="amount"
                       type="number"
-                      placeholder={`Minimum: $${selectedIdea.currentBid + 1}`}
+                      placeholder={`Minimum: ${selectedIdea.currentBid} ETH`}
                       value={bidAmount}
                       onChange={(e) => setBidAmount(e.target.value)}
                       className="bg-input-background border-border rounded-xl"
@@ -388,10 +387,7 @@ export function BiddingPage({ onNavigate, ideas, appState, addUserBid }: Bidding
                           </TableCell>
                           <TableCell>
                             <span className="text-primary">
-                              {bid.token === 'ETH' || bid.token === 'BTC' 
-                                ? `${bid.amount} ${bid.token}`
-                                : `$${bid.amount.toLocaleString()}`
-                              }
+                              {bid.amount} {bid.token}
                             </span>
                           </TableCell>
                           <TableCell className="text-muted-foreground">

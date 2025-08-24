@@ -287,7 +287,7 @@ export function ExplorePage({ onNavigate, ideas, appState, updateAppState }: Exp
                     <span className="text-sm text-muted-foreground">
                       {idea.auctionEnded ? 'Final Bid' : 'Current Bid'}
                     </span>
-                    <span className="font-semibold text-primary">${idea.currentBid}</span>
+                    <span className="font-semibold text-primary">{idea.currentBid}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Review Score</span>

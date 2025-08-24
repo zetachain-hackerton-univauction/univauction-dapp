@@ -135,7 +135,7 @@ export function ListIdeaPage({ onNavigate, addUserIdea }: ListIdeaPageProps) {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Reserve Price:</span>
-                    <span className="font-semibold text-foreground">${formData.reservePrice}</span>
+                    <span className="font-semibold text-foreground">{formData.reservePrice} ETH</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Auction Duration:</span>
@@ -412,16 +412,16 @@ export function ListIdeaPage({ onNavigate, addUserIdea }: ListIdeaPageProps) {
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <Label htmlFor="reserve-price" className="text-foreground text-base">Reserve Price (USD) *</Label>
+                <Label htmlFor="reserve-price" className="text-foreground text-base">Reserve Price (ETH) *</Label>
                 <div className="relative mt-3">
-                  <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground text-sm font-medium">ETH</span>
                   <Input
                     id="reserve-price"
                     type="number"
                     value={formData.reservePrice}
                     onChange={(e) => setFormData({ ...formData, reservePrice: e.target.value })}
                     placeholder="1000"
-                    className="pl-12 rounded-2xl border-border bg-input-background text-foreground h-12"
+                    className="pl-16 rounded-2xl border-border bg-input-background text-foreground h-12"
                   />
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
@@ -453,10 +453,10 @@ export function ListIdeaPage({ onNavigate, addUserIdea }: ListIdeaPageProps) {
                   <div>
                     <p className="font-medium text-foreground text-lg mb-2">Listing Requirements</p>
                     <ul className="text-sm text-muted-foreground space-y-2">
-                      <li>• <strong>Listing Fee:</strong> $50 (refunded if reserve price is met)</li>
+                      <li>• <strong>Listing Fee:</strong> 0.02 ETH (refunded if reserve price is met)</li>
                       <li>• <strong>Platform Fee:</strong> 5% of final sale price</li>
-                      <li>• <strong>Escrow Deposit:</strong> ${formData.deposit} (returned after auction)</li>
-                      <li>• <strong>Identity Verification:</strong> Required for auctions over $10,000</li>
+                      <li>• <strong>Escrow Deposit:</strong> {formData.deposit} ETH (returned after auction)</li>
+                      <li>• <strong>Identity Verification:</strong> Required for auctions over 4 ETH</li>
                     </ul>
                   </div>
                 </div>
@@ -489,7 +489,7 @@ export function ListIdeaPage({ onNavigate, addUserIdea }: ListIdeaPageProps) {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Reserve Price:</span>
-                      <span className="font-medium text-primary">${formData.reservePrice || '0'}</span>
+                      <span className="font-medium text-primary">{formData.reservePrice || '0'} ETH</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-border/50">
                       <span className="text-muted-foreground">Duration:</span>

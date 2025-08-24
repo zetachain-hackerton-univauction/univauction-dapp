@@ -1,29 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { ArrowLeft, CheckCircle, ExternalLink, FileText, Wallet, Shield, Award } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
-import type { Page, Idea, AppState } from '../App';
+import {
+  ArrowLeft,
+  Award,
+  CheckCircle,
+  ExternalLink,
+  FileText,
+  Shield,
+  Wallet,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner@2.0.3";
+
+import type { AppState, Idea, Page } from "../App";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 interface Step4NFTIssuancePageProps {
-  onNavigate: (page: Page, ideaId?: string) => void;
-  ideas: Idea[];
   appState: AppState;
+  ideas: Idea[];
+  onNavigate: (page: Page, ideaId?: string) => void;
 }
 
-export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIssuancePageProps) {
+export function Step4NFTIssuancePage({
+  onNavigate,
+  ideas,
+  appState,
+}: Step4NFTIssuancePageProps) {
   const [isProcessing, setIsProcessing] = useState(true);
   const [nftIssued, setNftIssued] = useState(false);
-  
-  const selectedIdea = ideas.find(idea => idea.id === appState.selectedIdeaId);
+
+  const selectedIdea = ideas.find(
+    (idea) => idea.id === appState.selectedIdeaId
+  );
 
   useEffect(() => {
     // Simulate NFT issuance process
     const timer = setTimeout(() => {
       setIsProcessing(false);
       setNftIssued(true);
-      toast.success('IdeaProof NFT Successfully Issued!');
+      toast.success("IdeaProof NFT Successfully Issued!");
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -34,13 +49,15 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="mb-4">Idea not found</h2>
-          <Button onClick={() => onNavigate('explore')}>Back to Explore</Button>
+          <Button onClick={() => onNavigate("explore")}>Back to Explore</Button>
         </div>
       </div>
     );
   }
 
-  const nftTokenId = `IP-${selectedIdea.id.toUpperCase()}-${Date.now().toString().slice(-6)}`;
+  const nftTokenId = `IP-${selectedIdea.id.toUpperCase()}-${Date.now()
+    .toString()
+    .slice(-6)}`;
   const issuanceDate = new Date().toLocaleDateString();
   const zetaScanUrl = `https://zetascan.com/nft/${nftTokenId}`;
 
@@ -53,7 +70,9 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => onNavigate('step3-winner-deposit', selectedIdea.id)}
+              onClick={() =>
+                onNavigate("step3-winner-deposit", selectedIdea.id)
+              }
               className="text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -72,9 +91,9 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                 <div className="text-sm text-muted-foreground">Review Idea</div>
               </div>
             </div>
-            
+
             <div className="flex-1 h-px bg-primary mx-4"></div>
-            
+
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                 <CheckCircle className="w-4 h-4 text-primary" />
@@ -84,21 +103,23 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                 <div className="text-sm text-muted-foreground">Auction</div>
               </div>
             </div>
-            
+
             <div className="flex-1 h-px bg-primary mx-4"></div>
-            
+
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
                 <CheckCircle className="w-4 h-4 text-primary" />
               </div>
               <div className="ml-3">
                 <div className="text-sm text-primary">Step 3</div>
-                <div className="text-sm text-muted-foreground">Winner Deposit</div>
+                <div className="text-sm text-muted-foreground">
+                  Winner Deposit
+                </div>
               </div>
             </div>
-            
+
             <div className="flex-1 h-px bg-primary mx-4"></div>
-            
+
             <div className="flex items-center">
               <div className="w-8 h-8 rounded-full bg-primary border-2 border-primary flex items-center justify-center">
                 <CheckCircle className="w-4 h-4 text-primary-foreground" />
@@ -113,7 +134,9 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
           {/* Title and Subtitle */}
           <div className="text-center">
             <h1 className="mb-4">Step 4 — NFT Issuance</h1>
-            <p className="text-xl text-muted-foreground">Your IdeaProof NFT has been successfully issued</p>
+            <p className="text-xl text-muted-foreground">
+              Your IdeaProof NFT has been successfully issued
+            </p>
           </div>
         </div>
       </div>
@@ -129,10 +152,12 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                 </div>
                 <h2 className="text-2xl">✅ Payment Received</h2>
                 <p className="text-muted-foreground text-lg">
-                  Escrow deposit of ${selectedIdea.currentBid} ZETA has been successfully received and verified
+                  Escrow deposit of ${selectedIdea.currentBid} ZETA has been
+                  successfully received and verified
                 </p>
                 <div className="text-sm text-muted-foreground">
-                  Transaction Hash: 0x9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f
+                  Transaction Hash:
+                  0x9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f
                 </div>
               </div>
             </CardContent>
@@ -156,22 +181,26 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                         {selectedIdea.proofHash.slice(0, 12)}...
                       </span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Blockchain</span>
                       <Badge className="bg-primary/20 text-primary border-primary/30">
                         ZetaChain
                       </Badge>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Issue Date</span>
                       <span className="text-foreground">{issuanceDate}</span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Certificate ID</span>
-                      <span className="text-foreground font-mono text-sm">CERT-{nftTokenId}</span>
+                      <span className="text-muted-foreground">
+                        Certificate ID
+                      </span>
+                      <span className="text-foreground font-mono text-sm">
+                        CERT-{nftTokenId}
+                      </span>
                     </div>
                   </div>
 
@@ -180,7 +209,7 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                       variant="outline"
                       size="sm"
                       className="w-full border-border text-foreground hover:bg-secondary/50 rounded-xl"
-                      onClick={() => window.open(zetaScanUrl, '_blank')}
+                      onClick={() => window.open(zetaScanUrl, "_blank")}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View on ZetaScan
@@ -198,24 +227,32 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                   <div className="grid grid-cols-1 gap-6">
                     <div className="text-center space-y-2">
                       <div className="text-2xl">${selectedIdea.currentBid}</div>
-                      <div className="text-sm text-muted-foreground">Final Bid Amount</div>
+                      <div className="text-sm text-muted-foreground">
+                        Final Bid Amount
+                      </div>
                     </div>
-                    
+
                     <div className="text-center space-y-2">
                       <div className="text-2xl">{selectedIdea.bidCount}</div>
-                      <div className="text-sm text-muted-foreground">Total Bids</div>
+                      <div className="text-sm text-muted-foreground">
+                        Total Bids
+                      </div>
                     </div>
-                    
+
                     <div className="text-center space-y-2">
                       <div className="text-2xl">{selectedIdea.views}</div>
-                      <div className="text-sm text-muted-foreground">Total Views</div>
+                      <div className="text-sm text-muted-foreground">
+                        Total Views
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="pt-4 border-t border-border">
                     <div className="text-center space-y-2">
                       <h3 className="text-lg">{selectedIdea.title}</h3>
-                      <p className="text-muted-foreground">{selectedIdea.summary}</p>
+                      <p className="text-muted-foreground">
+                        {selectedIdea.summary}
+                      </p>
                       <Badge className="bg-primary/20 text-primary border-primary/30">
                         {selectedIdea.category}
                       </Badge>
@@ -245,28 +282,39 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                       <div className="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
                         <Award className="w-8 h-8 text-primary" />
                       </div>
-                      <h3 className="text-lg mb-2">🎉 IdeaProof NFT Successfully Issued</h3>
+                      <h3 className="text-lg mb-2">
+                        🎉 IdeaProof NFT Successfully Issued
+                      </h3>
                       <p className="text-sm text-muted-foreground">
-                        Your unique NFT has been minted and transferred to your wallet
+                        Your unique NFT has been minted and transferred to your
+                        wallet
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
-                        <span className="text-muted-foreground">NFT Token ID</span>
-                        <span className="text-primary font-mono text-sm">{nftTokenId}</span>
+                        <span className="text-muted-foreground">
+                          NFT Token ID
+                        </span>
+                        <span className="text-primary font-mono text-sm">
+                          {nftTokenId}
+                        </span>
                       </div>
-                      
+
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Contract</span>
-                        <span className="text-foreground font-mono text-xs">0xIDEA...PROOF</span>
+                        <span className="text-foreground font-mono text-xs">
+                          0xIDEA...PROOF
+                        </span>
                       </div>
-                      
+
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Owner</span>
-                        <span className="text-foreground font-mono text-xs">0x1a2b...c3d4</span>
+                        <span className="text-foreground font-mono text-xs">
+                          0x1a2b...c3d4
+                        </span>
                       </div>
-                      
+
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Royalty</span>
                         <span className="text-foreground">5%</span>
@@ -278,14 +326,19 @@ export function Step4NFTIssuancePage({ onNavigate, ideas, appState }: Step4NFTIs
                         variant="outline"
                         size="sm"
                         className="w-full border-border text-foreground hover:bg-secondary/50 rounded-xl"
-                        onClick={() => window.open(`https://opensea.io/assets/zeta/${nftTokenId}`, '_blank')}
+                        onClick={() =>
+                          window.open(
+                            `https://opensea.io/assets/zeta/${nftTokenId}`,
+                            "_blank"
+                          )
+                        }
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         View on OpenSea
                       </Button>
-                      
+
                       <Button
-                        onClick={() => onNavigate('my-page')}
+                        onClick={() => onNavigate("my-page")}
                         className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl"
                       >
                         <Wallet className="w-4 h-4 mr-2" />

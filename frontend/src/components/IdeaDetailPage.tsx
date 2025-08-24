@@ -112,13 +112,13 @@ export function IdeaDetailPage({ ideas, appState, onNavigate, addUserBid, wallet
         return (
           <div className="space-y-6">
             <div>
-              <Label htmlFor="bid-amount" className="text-foreground">Bid Amount (USD)</Label>
+              <Label htmlFor="bid-amount" className="text-foreground">Bid Amount (ETH)</Label>
               <Input
                 id="bid-amount"
                 type="number"
                 value={bidAmount}
                 onChange={(e) => setBidAmount(e.target.value)}
-                placeholder={`Minimum: ${Math.max(idea.currentBid + 50, idea.reservePrice)}`}
+                placeholder={`Minimum: ${Math.max(idea.currentBid + 0.02, idea.reservePrice)} ETH`}
                 className="mt-2 rounded-2xl border-border bg-input-background"
               />
             </div>
@@ -140,7 +140,7 @@ export function IdeaDetailPage({ ideas, appState, onNavigate, addUserBid, wallet
                 <AlertCircle className="w-5 h-5 text-yellow-500 mt-0.5" />
                 <div>
                   <p className="text-sm text-foreground font-medium">
-                    Notice: A deposit of $100 is required to participate.
+                    Notice: A deposit of 0.04 ETH is required to participate.
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     This will be refunded if you don't win the auction.
@@ -386,7 +386,7 @@ export function IdeaDetailPage({ ideas, appState, onNavigate, addUserBid, wallet
               <CardContent className="p-8">
                 <div className="text-center mb-8">
                   <div className="text-4xl font-bold text-primary mb-2">
-                    ${idea.currentBid.toLocaleString()}
+                    {idea.currentBid} ETH
                   </div>
                   <div className="text-muted-foreground">
                     {idea.auctionEnded ? 'Final Bid' : 'Current Highest Bid'}
@@ -396,7 +396,7 @@ export function IdeaDetailPage({ ideas, appState, onNavigate, addUserBid, wallet
                 <div className="space-y-6 mb-8">
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Reserve Price</span>
-                    <span className="font-medium text-foreground">${idea.reservePrice.toLocaleString()}</span>
+                    <span className="font-medium text-foreground">{idea.reservePrice} ETH</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Total Bids</span>
